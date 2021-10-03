@@ -1,0 +1,77 @@
+{
+	"name": "mymidi",
+	"productName": "mymidi",
+	"version": "0.0.0",
+	"description": "My striking app",
+	"license": "MIT",
+	"repository": "newdigate/mymidi",
+	"author": {
+		"name": "Newdigate",
+		"email": "nicnewdigate@gmail.com",
+		"url": "github.com/newdigate"
+	},
+	"scripts": {
+		"postinstall": "electron-builder install-app-deps",
+		"lint": "xo",
+		"test": "npm run lint",
+		"start": "ELECTRON_DISABLE_SECURITY_WARNINGS=true electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --macos --linux --windows",
+		"release": "np"
+	},
+	"dependencies": {
+		"bootstrap": "^5.1.1",
+		"electron-context-menu": "^3.0.0",
+		"electron-debug": "^3.2.0",
+		"electron-store": "^8.0.0",
+		"electron-unhandled": "^3.0.2",
+		"electron-updater": "^4.3.8",
+		"electron-util": "^0.15.1",
+		"midi": "^2.0.0"
+	},
+	"devDependencies": {
+		"electron": "^12.0.6",
+		"electron-builder": "^22.10.5",
+		"np": "^7.5.0",
+		"xo": "^0.39.1"
+	},
+	"xo": {
+		"envs": [
+			"node",
+			"browser"
+		]
+	},
+	"np": {
+		"publish": false,
+		"releaseDraft": false
+	},
+	"build": {
+		"appId": "com.newdigate.mymidi",
+		"mac": {
+			"category": "public.app-category.social-networking",
+			"darkModeSupport": true
+		},
+		"dmg": {
+			"iconSize": 160,
+			"contents": [
+				{
+					"x": 180,
+					"y": 170
+				},
+				{
+					"x": 480,
+					"y": 170,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"linux": {
+			"target": [
+				"AppImage",
+				"deb"
+			],
+			"category": "Network;Chat"
+		}
+	}
+}
