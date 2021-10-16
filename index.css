@@ -179,6 +179,7 @@ div.scenelaunch-col {/*
 	top: -5px;
 	width: 50px;
 	text-align: center;
+	line-height: 8px;
 }
 
 .button-row-col
@@ -325,3 +326,21 @@ div.scenelaunch-col {/*
 	height: 20px;
 	width: 20px;
 }
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 100%;
+    padding: 0 10px;
+}
+
+#slider-row {
+	background-color: #111;
+	margin: 2px 10px;
+	padding: 2px 0px;
+	border: 1px solid #222;
+	border-radius: 5px;
+	height: 40%;
+}
+
