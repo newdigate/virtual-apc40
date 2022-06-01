@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const {app, BrowserWindow, Menu, remote} = require('electron');
+const {app, BrowserWindow, Menu, ipcMain } = require('electron');
 /// const {autoUpdater} = require('electron-updater');
 const {is} = require('electron-util');
 const unhandled = require('electron-unhandled');
@@ -27,21 +27,27 @@ contextMenu();
 //
 // 	autoUpdater.checkForUpdates();
 // }
+ipcMain.handle('some-name', async (event, someArgument) => {
+	const result = 1;// await doSomeWork(someArgument)
+	console.log('some-name...');
+	return result
+  })
 
 // Prevent window from being garbage collected
 let mainWindow;
 const output = new midi.Output();
 output.openVirtualPort("Test Output");
+exports.noteDown = () => console.log('NOTE is DOWN');
 
 const createMainWindow = async () => {
 	const win = new BrowserWindow({
 		title: app.name,
 		show: false,
 		width: 800,
-		height: 600 /*,
+		height: 600,
 		webPreferences: {
-			devTools: false
-		}*/
+			preload: path.join(__dirname, 'preload.js')
+		}
 	});
 
 	win.on('ready-to-show', () => {
