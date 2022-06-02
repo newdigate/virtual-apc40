@@ -36,7 +36,10 @@ output.openVirtualPort("Test Output");
 ipcMain.handle('some-name', async (event, someArgument) => {
 	const result = someArgument;// await doSomeWork(someArgument)
 	//console.log(result);
-	output.sendMessage([144,someArgument,90]);
+	const noteNum = someArgument[0];
+	const channelNum = someArgument[1];
+
+	output.sendMessage([144, noteNum, 90 + channelNum]);
 	return result
   })
 
