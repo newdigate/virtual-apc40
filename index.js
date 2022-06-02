@@ -34,9 +34,9 @@ const output = new midi.Output();
 output.openVirtualPort("Test Output");
 
 ipcMain.handle('some-name', async (event, someArgument) => {
-	const result = 1;// await doSomeWork(someArgument)
-	//console.log('some-name...');
-	output.sendMessage([144,64,90]);
+	const result = someArgument;// await doSomeWork(someArgument)
+	//console.log(result);
+	output.sendMessage([144,someArgument,90]);
 	return result
   })
 
@@ -64,7 +64,7 @@ const createMainWindow = async () => {
 		// Dereference the window
 		// For multiple windows store them in an array
 		mainWindow = undefined;
-		output.close();
+		output.closePort();
 	});
 
 	await win.loadFile(path.join(__dirname, 'index.html'));
