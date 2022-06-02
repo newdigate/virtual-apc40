@@ -27,17 +27,19 @@ contextMenu();
 //
 // 	autoUpdater.checkForUpdates();
 // }
-ipcMain.handle('some-name', async (event, someArgument) => {
-	const result = 1;// await doSomeWork(someArgument)
-	console.log('some-name...');
-	return result
-  })
 
 // Prevent window from being garbage collected
 let mainWindow;
 const output = new midi.Output();
 output.openVirtualPort("Test Output");
-exports.noteDown = () => console.log('NOTE is DOWN');
+
+ipcMain.handle('some-name', async (event, someArgument) => {
+	const result = 1;// await doSomeWork(someArgument)
+	//console.log('some-name...');
+	output.sendMessage([144,64,90]);
+	return result
+  })
+
 
 const createMainWindow = async () => {
 	const win = new BrowserWindow({
@@ -54,7 +56,7 @@ const createMainWindow = async () => {
 		win.show();
 
 		setInterval(() => {
-			output.sendMessage([176,22,1]);
+			//output.sendMessage([176,22,1]);
 		}, 1000);
 	});
 
