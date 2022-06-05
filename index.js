@@ -35,7 +35,6 @@ output.openVirtualPort("Test Output");
 
 ipcMain.handle('some-name', async (event, someArgument) => {
 	const result = someArgument;// await doSomeWork(someArgument)
-	//console.log(result);
 	const noteNum = someArgument[0];
 	const channelNum = someArgument[1];
 
@@ -43,6 +42,15 @@ ipcMain.handle('some-name', async (event, someArgument) => {
 	return result
   })
 
+ipcMain.handle('some-name-cc', async (event, someArgument) => {
+	const result = someArgument;// await doSomeWork(someArgument)
+	const ccNum = someArgument[0];
+	const channelNum = someArgument[1];
+	const value = someArgument[2];
+
+	output.sendMessage([0xB0 + channelNum, ccNum, value]);
+	return result
+})
 
 const createMainWindow = async () => {
 	const win = new BrowserWindow({
