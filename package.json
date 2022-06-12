@@ -1,14 +1,14 @@
 {
-	"name": "mymidi",
-	"productName": "mymidi",
-	"version": "0.0.0",
-	"description": "My striking app",
+	"name": "virtual-apc40",
+	"productName": "virtual-apc40",
+	"version": "0.1.0",
+	"description": "virtual apc40 software emulator",
 	"license": "MIT",
-	"repository": "newdigate/mymidi",
+	"repository": "https://github.com/newdigate/virtual-apc40",
 	"author": {
 		"name": "Newdigate",
 		"email": "nicnewdigate@gmail.com",
-		"url": "github.com/newdigate"
+		"url": "https://github.com/newdigate"
 	},
 	"scripts": {
 		"postinstall": "electron-builder install-app-deps",
@@ -20,7 +20,7 @@
 		"release": "np"
 	},
 	"dependencies": {
-		"@newdigate/webaudio-controls": "^2.1.2",
+		"@newdigate/webaudio-controls": "^2.1.3",
 		"bootstrap": "^5.1.1",
 		"electron-context-menu": "^3.0.0",
 		"electron-debug": "^3.2.0",
@@ -48,7 +48,7 @@
 		"releaseDraft": false
 	},
 	"build": {
-		"appId": "com.newdigate.mymidi",
+		"appId": "com.newdigate.virtual-apc40",
 		"mac": {
 			"category": "public.app-category.social-networking",
 			"darkModeSupport": true
