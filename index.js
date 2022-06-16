@@ -33,17 +33,26 @@ let mainWindow;
 const output = new midi.Output();
 output.openVirtualPort("virtual APC40");
 
-ipcMain.handle('some-name', async (event, someArgument) => {
-	const result = someArgument;// await doSomeWork(someArgument)
+ipcMain.handle('note-down', async (event, someArgument) => {
+	const result = someArgument;
 	const noteNum = someArgument[0];
 	const channelNum = someArgument[1];
 
-	output.sendMessage([144, noteNum, 90 + channelNum]);
+	output.sendMessage([0x90 + channelNum, noteNum, 90 ]);
 	return result
   })
 
+ipcMain.handle('note-up', async (event, someArgument) => {
+	const result = someArgument;
+	const noteNum = someArgument[0];
+	const channelNum = someArgument[1];
+
+	output.sendMessage([0x80 + channelNum, noteNum, 0]);
+	return result
+})
+
 ipcMain.handle('some-name-cc', async (event, someArgument) => {
-	const result = someArgument;// await doSomeWork(someArgument)
+	const result = someArgument;
 	const ccNum = someArgument[0];
 	const channelNum = someArgument[1];
 	const value = someArgument[2];
