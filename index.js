@@ -31,7 +31,7 @@ contextMenu();
 // Prevent window from being garbage collected
 let mainWindow;
 const output = new midi.Output();
-output.openVirtualPort("Test Output");
+output.openVirtualPort("virtual APC40");
 
 ipcMain.handle('some-name', async (event, someArgument) => {
 	const result = someArgument;// await doSomeWork(someArgument)
