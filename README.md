@@ -6,3 +6,7 @@ a virtual midi device emulating an apc40, built with electronjs.
 * beginning of a work in progress...
 
 ![work in progress](/docs/virtual-apc40.png)
+` sh
+> npm install --openssl_fips=''
+> npm run dist --openssl_fips=''
+`

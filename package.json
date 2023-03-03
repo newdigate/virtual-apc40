@@ -20,7 +20,7 @@
 		"release": "np"
 	},
 	"dependencies": {
-		"@newdigate/webaudio-controls": "^2.1.3",
+		"@newdigate/webaudio-controls": "git://github.com/newdigate/webaudio-controls.git",
 		"bootstrap": "^5.1.1",
 		"electron-context-menu": "^3.0.0",
 		"electron-debug": "^3.2.0",
